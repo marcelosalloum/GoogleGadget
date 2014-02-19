@@ -37,11 +37,8 @@
   <Name>Hello World</Name>
   <Url>google.com:RecipientEmailExtractor</Url>
   <Url>google.com:SenderEmailExtractor</Url>
-  <!-- <Param name="recipient_email" value=".*"/>
-  <Param name="sender_email" value=".*"/> -->
   <Triggers ref="HelloWorldGadget"/>
   <Scope ref="emailRecipient"/>
-  <!-- <Scope ref="emailSender"/> -->
   <Container name="mail"/>
 </Extension>
 
@@ -64,9 +61,5 @@
   for the CC: and TO: addresses"</Reason>
 </Scope>
 
-<!-- <Scope id="emailSender">
-  <Url>tag:google.com,2010:auth/contextual/extractor/FROM_ADDRESS</Url>
-  <Reason>This application searches the message sender of each email"</Reason>
-</Scope> -->
 
 </ApplicationManifest>
