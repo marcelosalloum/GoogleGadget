@@ -37,11 +37,10 @@
   <Name>Hello World</Name>
   <Url>google.com:RecipientEmailExtractor</Url>
   <Url>google.com:SenderEmailExtractor</Url>
-  <Param name="recipient_email" value=".*"/>
-  <Param name="sender_email" value=".*"/>
   <Triggers ref="HelloWorldGadget"/>
   <Scope ref="emailRecipient"/>
   <Scope ref="emailSender"/>
+  <Scope ref="emailId"/>  
   <Container name="mail"/>
 </Extension>
 
@@ -67,6 +66,11 @@
 <Scope id="emailSender">
   <Url>tag:google.com,2010:auth/contextual/extractor/FROM_ADDRESS</Url>
   <Reason>This application searches the message sender of each email"</Reason>
+</Scope>
+
+<Scope id="emailId">
+  <Url>tag:google.com,2010:auth/contextual/extractor/MESSAGE_ID</Url>
+  <Reason>Shows id of all messages"</Reason>
 </Scope>
 
 </ApplicationManifest>
