@@ -35,18 +35,18 @@
 
 <Extension id="HelloWorldExtractor" type="contextExtractor">
   <Name>Hello World</Name>
-  <Url>google.com:HelloWorld</Url>
-  <!-- Uncomment this Param to apply a filter to the extractor's
-  default output. The example regexp below makes the match case sensitive.
-  <Param name="hello" value="H[a-z]* W[a-z]*"/> -->
+  <Url>google.com:RecipientEmailExtractor</Url>
+  <Url>google.com:SenderEmailExtractor</Url>
+  <Param name="recipient_email" value=".*"/>
+  <Param name="sender_email" value=".*"/>
   <Triggers ref="HelloWorldGadget"/>
-  <Scope ref="emailSubject"/>
-  <Scope ref="emailBody"/>
+  <Scope ref="emailRecipient"/>
+  <Scope ref="emailSender"/>
   <Container name="mail"/>
 </Extension>
 
-<!-- GADGET -->
 
+<!-- GADGET -->
 <Extension id="HelloWorldGadget" type="gadget">
   <Name>Hello World Gmail contextual gadget</Name>
   <Url>https://raw.github.com/marcelosalloum/GoogleGadget/master/hello-world-spec.xml</Url>
@@ -55,18 +55,18 @@
   <!-- <Param name="caja" value="enabled"/> -->
 </Extension>
 
-<!-- SCOPE -->
 
-<Scope id="emailSubject">
-  <Url>tag:google.com,2010:auth/contextual/extractor/SUBJECT</Url>
-  <Reason>This application searches the Subject: line of each email
-  for the text "Hello World."</Reason>
+<!-- SCOPE -->
+<Scope id="emailRecipient">
+  <Url>tag:google.com,2010:auth/contextual/extractor/TO_ADDRESS</Url>
+  <Url>tag:google.com,2010:auth/contextual/extractor/CC_EMAIL</Url>
+  <Reason>This application searches the message recipient of each email
+  for the CC: and TO: addresses"</Reason>
 </Scope>
 
-<Scope id="emailBody">
-  <Url>tag:google.com,2010:auth/contextual/extractor/BODY</Url>
-  <Reason>This application searches the message body of each email
-  for the text "Hello World."</Reason>
+<Scope id="emailSender">
+  <Url>tag:google.com,2010:auth/contextual/extractor/FROM_ADDRESS</Url>
+  <Reason>This application searches the message sender of each email"</Reason>
 </Scope>
 
 </ApplicationManifest>
