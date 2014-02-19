@@ -37,11 +37,11 @@
   <Name>Hello World</Name>
   <Url>google.com:RecipientEmailExtractor</Url>
   <Url>google.com:SenderEmailExtractor</Url>
-  <Param name="recipient_email" value=".*"/>
-  <Param name="sender_email" value=".*"/>
+  <!-- <Param name="recipient_email" value=".*"/>
+  <Param name="sender_email" value=".*"/> -->
   <Triggers ref="HelloWorldGadget"/>
   <Scope ref="emailRecipient"/>
-  <Scope ref="emailSender"/>
+  <!-- <Scope ref="emailSender"/> -->
   <Container name="mail"/>
 </Extension>
 
@@ -49,7 +49,7 @@
 <!-- GADGET -->
 <Extension id="HelloWorldGadget" type="gadget">
   <Name>Hello World Gmail contextual gadget</Name>
-  <Url>https://raw.github.com/marcelosalloum/GoogleGadget/master/hello-world-spec.xml</Url>
+  <Url>https://raw.github.com/marcelosalloum/GoogleGadget/master/cogentio_gadget/hello-world-spec.xml</Url>
   <Container name="mail"/>
   <!-- Uncomment this to enable Caja. -->
   <!-- <Param name="caja" value="enabled"/> -->
@@ -64,9 +64,9 @@
   for the CC: and TO: addresses"</Reason>
 </Scope>
 
-<Scope id="emailSender">
+<!-- <Scope id="emailSender">
   <Url>tag:google.com,2010:auth/contextual/extractor/FROM_ADDRESS</Url>
   <Reason>This application searches the message sender of each email"</Reason>
-</Scope>
+</Scope> -->
 
 </ApplicationManifest>

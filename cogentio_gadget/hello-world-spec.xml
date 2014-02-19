@@ -24,7 +24,7 @@
      in the manifest, but is still expected to be present. -->
     <Require feature="google.contentmatch">
       <Param name="extractors">
-        google.com:RecipientEmailExtractor,google.com:SenderEmailExtractor
+        google.com:RecipientEmailExtractor<!-- ,google.com:SenderEmailExtractor -->
       </Param>
     </Require>
 
@@ -40,6 +40,7 @@
 
         <!-- Fetch the array of content matches. -->
         matches = google.contentmatch.getContentMatches();
+        alert(matches.length);
         var matchList = document.createElement('UL');
         var listItem;
         var extractedText;
