@@ -33,17 +33,37 @@
 
 <!-- EXTRACTOR -->
 
-<Extension id="HelloWorldExtractor" type="contextExtractor">
-  <Name>Hello World</Name>
-  <Url>google.com:RecipientEmailExtractor</Url>
-  <Url>google.com:SenderEmailExtractor</Url>
+<Extension id="TOExtractor" type="contextExtractor">
+  <Name>TO Extractor</Name>
+  <Url>google.com:RecipientToEmailExtractor</Url>
   <Triggers ref="HelloWorldGadget"/>
-  <Scope ref="emailRecipient"/>
-  <Scope ref="emailSender"/>
-  <Scope ref="emailId"/>  
+  <Scope ref="emailTO"/>
   <Container name="mail"/>
 </Extension>
 
+<Extension id="CCExtractor" type="contextExtractor">
+  <Name>CC Extractor</Name>
+  <Url>google.com:RecipientCCEmailExtractor</Url>
+  <Triggers ref="HelloWorldGadget"/>
+  <Scope ref="emailCC"/>
+  <Container name="mail"/>
+</Extension>
+
+<Extension id="SenderExtractor" type="contextExtractor">
+  <Name>Sender Extractor</Name>
+  <Url>google.com:SenderEmailExtractor</Url>
+  <Triggers ref="HelloWorldGadget"/>
+  <Scope ref="emailSender"/>
+  <Container name="mail"/>
+</Extension>
+
+<Extension id="MessageIDExtractor" type="contextExtractor">
+  <Name>Message ID Extractor</Name>
+  <Url>google.com:MessageIDExtractor</Url>
+  <Triggers ref="HelloWorldGadget"/>
+  <Scope ref="emailId"/>  
+  <Container name="mail"/>
+</Extension>
 
 <!-- GADGET -->
 <Extension id="HelloWorldGadget" type="gadget">
@@ -56,11 +76,16 @@
 
 
 <!-- SCOPE -->
-<Scope id="emailRecipient">
+<Scope id="emailTO">
   <Url>tag:google.com,2010:auth/contextual/extractor/TO_ADDRESS</Url>
+  <Reason>This application searches the message recipient of each email
+  for TO: addresses"</Reason>
+</Scope>
+
+<Scope id="emailCC">
   <Url>tag:google.com,2010:auth/contextual/extractor/CC_EMAIL</Url>
   <Reason>This application searches the message recipient of each email
-  for the CC: and TO: addresses"</Reason>
+  for CC: addresses"</Reason>
 </Scope>
 
 <Scope id="emailSender">
